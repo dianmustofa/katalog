@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Skillhunt - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Edit Data</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -25,11 +25,10 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
-
   </head>
   <body>
     
-	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container-fluid px-md-4	">
 	      <a class="navbar-brand" href="index.html">Jakartasatu</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +43,7 @@
 	        </ul>
 	      </div>
 	    </div>
-	  </nav>
+	</nav>
     <!-- END nav -->
     
     <div class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
@@ -53,23 +52,19 @@
         <div class="row no-gutters slider-text align-items-end justify-content-start">
           <div class="col-md-12 ftco-animate text-center mb-5">
           	<p class="breadcrumbs mb-0"><span class="mr-3"><a href="index.php">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Data</span></p>
-            <h1 class="mb-3 bread">Detail Data</h1>
+            <h1 class="mb-3 bread">Edit Data</h1>
           </div>
         </div>
       </div>
     </div>
 
-	<section class="ftco-section bg-light">
+	<section class="ftco-section contact-section bg-light">
       <div class="container">
-        <h3 class="mb-3 bread"> <span class="mr-3"><a href="data.php"> <i class="ion-ios-arrow-back"></i></a></span> <span>Detail Data</span></h3>
-        <div class="row">
-        
-        <div class="col-md-12 col-lg-8 mb-5">
         <?php
         include 'connect.php';
-
-        // Mengambil ID dari URL
+        
         $user_id = isset($_GET['id']) ? $_GET['id'] : '';
+
         if (!empty($user_id)) {
             // Query untuk mengambil data user berdasarkan ID
             $sql = "SELECT * FROM KATALOG_ALL_DATA WHERE ID = :user_id";
@@ -79,27 +74,58 @@
 
             if ($row = oci_fetch_assoc($stmt)) {
                 ?>
-                <form action="#" class="p-5 bg-white">
-                    <div class="row form-group">
-                        <div class="col-md-12"><h3> <?php echo htmlspecialchars($row['ALIAS_TITLE']); ?></h3></div>
-                        <div class="col-md-12"><p>Deskripsi <br><?php echo htmlspecialchars(!empty($row['DESKRIPSI_SERVICE']) ? $row['DESKRIPSI_SERVICE'] : 'belum ada data', ENT_QUOTES, 'UTF-8'); ?></p></div>
-                        <div class="col-md-12">
-                          <div class="col-md-6">
-                            <p>Waktu Pembuatan: <?php echo htmlspecialchars(!empty($row['CREATED']) ? $row['CREATED'] : 'belum ada data', ENT_QUOTES, 'UTF-8'); ?></p>
-                          </div>
-                          <div class="col-md-6">
-                            <p>Jumlah dilihat : <?php echo $row['NUMVIEWS']; ?> </p>
-                          </div>
+                <div class="row d-flex mb-5 contact-info">
+                <div class="col-md-12 mb-4">
+                    <h2 class="h3"><span class="mr-3"><a href="data-detail.php?id=<?php echo $row['ID']; ?>"> <i class="ion-ios-arrow-back"></i></a></span>Edit Data</h2>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md-3">
+                    <p><a><?php echo htmlspecialchars($row['ALIAS_TITLE']); ?></a></p>
+                </div>
+                <div class="col-md-3">
+                    <p><span>Pemilik data:</span> <a><?php echo htmlspecialchars(!empty($row['SKPD']) ? $row['SKPD'] : 'belum ada data', ENT_QUOTES, 'UTF-8'); ?></a></p>
+                </div>
+                <div class="col-md-3">
+                    <p><span>Sifat data:</span> <a><?php echo htmlspecialchars(!empty($row['AKSES']) ? $row['AKSES'] : 'belum ada data', ENT_QUOTES, 'UTF-8'); ?></a></p>
+                </div>
+                <div class="col-md-3">
+                    <p><span>Link data: </span> <a href="<?php echo htmlspecialchars(!empty($row['URL']) ? $row['URL'] : 'belum ada data', ENT_QUOTES, 'UTF-8'); ?>" target="new_blank">klik disini</a></p>
+                </div>
+                </div>
+                <div class="row block-9">
+                    <div class="col-md-12 order-md-last d-flex">
+                        <form action="update.php" class="bg-white p-5 contact-form">
+                        <div class="form-group">
+                            <input type="hidden" name="ID" class="form-control" value="<?php echo $data['ID'] ?>">
+                            <input type="hidden" name="TITLE" class="form-control" value="<?php echo $data['TITLE'] ?>">
+                            <input type="text" name="ALIAS_TITLE" class="form-control" value="<?php echo $row['ALIAS_TITLE'] ?>">
+                            <input type="hidden" name="OWNER" class="form-control" value="<?php echo $data['OWNER'] ?>">
+                            <input type="hidden" name="CREATED" class="form-control" value="<?php echo $data['CREATED'] ?>">
+                            <input type="hidden" name="MODIFIED" class="form-control" value="<?php echo $data['MODIFIED'] ?>">
+                            <input type="hidden" name="PORTAL" class="form-control" value="<?php echo $data['PORTAL'] ?>">
+                            <input type="hidden" name="type" class="form-control" value="<?php echo $data['type'] ?>">
+                            <input type="hidden" name="URL" class="form-control" value="<?php echo $data['URL'] ?>">
                         </div>
+                        <div class="form-group">
+                            <input type="text" name="AKSES" class="form-control" value="<?php echo $row['AKSES'] ?>">
+                            <input type="hidden" name="OWNERFOLDER" class="form-control" value="<?php echo $data['OWNERFOLDER'] ?>">
+                            <input type="hidden" name="FOLDER" class="form-control" value="<?php echo $data['FOLDER'] ?>">
+                            <input type="hidden" name="NUMVIEWS" class="form-control" value="<?php echo $data['NUMVIEWS'] ?>">
+                            <input type="hidden" name="SKPD" class="form-control" value="<?php echo $data['SKPD'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="KATEGORI" class="form-control" value="<?php echo $row['KATEGORI'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="DESKRIPSI_SERVICE" cols="30" rows="7" class="form-control" value="<?php echo $row['DESKRIPSI_SERVICE'] ?>"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Simpan Data" class="btn btn-primary py-3 px-5">
+                        </div>
+                        </form>
+                    
                     </div>
-
-                    <!-- <div class="row form-group">
-                        <div class="col-md-12"><h3>Peta</h3></div>
-                        <div class="col-md-12 mb-3 mb-md-0">
-                            <div class="container" style="width: 500px;border: 0.5px solid gray;padding: 100px;margin: 20px;"></div>
-                        </div>
-                    </div> -->
-                </form>
+                </div>
                 <?php
             } else {
                 echo "<p>Data not found.</p>";
@@ -111,39 +137,10 @@
         // Tutup koneksi
         oci_close($db);
         ?>
-    </div>
-
-          <div class="col-lg-4">
-            <div class="p-4 mb-3 bg-white" style="max-width: 100%;">
-              <h3 class="h5 text-black mb-3">Metadata</h3>
-              <p class="mb-0 font-weight-bold">Pemilik Data</p>
-              <p class="mb-4"><?php echo htmlspecialchars(!empty($row['SKPD']) ? $row['SKPD'] : 'belum ada data', ENT_QUOTES, 'UTF-8'); ?></p>
-
-              <p class="mb-0 font-weight-bold">Tipe Data</p>
-              <p class="mb-4"><?php echo htmlspecialchars(!empty($row['TIPEDATA']) ? $row['TIPEDATA'] : 'belum ada data', ENT_QUOTES, 'UTF-8'); ?></p>
-
-              <p class="mb-0 font-weight-bold">Sifat Data</p>
-              <p class="mb-4"><?php echo htmlspecialchars(!empty($row['AKSES']) ? $row['AKSES'] : 'belum ada data', ENT_QUOTES, 'UTF-8'); ?></p>
-
-              <p class="mb-0 font-weight-bold">Kategori Data</p>
-              <p class="mb-4"><?php echo htmlspecialchars(!empty($row['KATEGORI']) ? $row['KATEGORI'] : 'belum ada data', ENT_QUOTES, 'UTF-8'); ?></p>
-
-              <p class="mb-0 font-weight-bold">URL Service</p>
-              <p class="mb-4" style="word-wrap: break-word; overflow-wrap: break-word;"><a href="#"><?php echo htmlspecialchars(!empty($row['URL']) ? $row['URL'] : 'belum ada data', ENT_QUOTES, 'UTF-8'); ?></a></p>
-
-            </div>
-            
-            <div class="p-4 mb-3 bg-white">
-              <h3 class="h5 text-black mb-3">Editing Data</h3>
-              <p>Anda dapat melakuka perubahan data dengan akses tombol "Edit data" dibawah ini.</p>
-              <p><a href="edit-data.php?id=<?php echo $row['ID']; ?>" class="btn btn-primary  py-2 px-4">Edit data</a></p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
-  <footer class="ftco-footer ftco-bg-dark ftco-section">
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
 		<div class="container">
 			<div class="row mb-5">
 				<div class="col-md">
@@ -192,10 +189,9 @@
   <script src="js/aos.js"></script>
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
-  <!-- <script src="js/google-map.js"></script> -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-  
     
   </body>
 </html>
