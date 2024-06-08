@@ -5,7 +5,7 @@ $jktsatu = "
     (ADDRESS_LIST =
     (ADDRESS = 
         (PROTOCOL = TCP)
-        (HOST = localhost)
+        (HOST = 10.15.38.10)
         (PORT = 1521)
     )
     )
@@ -13,7 +13,7 @@ $jktsatu = "
 ))";
 
 // Connect to the database
-$db = oci_connect(username, password, $jktsatu);
+$db = oci_connect('ops_dev', 'opsdev2024', $jktsatu);
 
 if (!$db) {
     $e = oci_error();

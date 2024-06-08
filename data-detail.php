@@ -129,7 +129,7 @@
               <p class="mb-4"><?php echo htmlspecialchars(!empty($row['KATEGORI']) ? $row['KATEGORI'] : 'belum ada data', ENT_QUOTES, 'UTF-8'); ?></p>
 
               <p class="mb-0 font-weight-bold">URL Service</p>
-              <p class="mb-4" style="word-wrap: break-word; overflow-wrap: break-word;"><a href="#"><?php echo htmlspecialchars(!empty($row['URL']) ? $row['URL'] : 'belum ada data', ENT_QUOTES, 'UTF-8'); ?></a></p>
+              <p class="mb-4" style="word-wrap: break-word; overflow-wrap: break-word;"><a href="#"><?php echo htmlspecialchars(!empty($row['URLDATA']) ? $row['URLDATA'] : 'belum ada data', ENT_QUOTES, 'UTF-8'); ?></a></p>
 
             </div>
             

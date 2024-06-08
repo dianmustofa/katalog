@@ -89,35 +89,35 @@
                     <p><span>Sifat data:</span> <a><?php echo htmlspecialchars(!empty($row['AKSES']) ? $row['AKSES'] : 'belum ada data', ENT_QUOTES, 'UTF-8'); ?></a></p>
                 </div>
                 <div class="col-md-3">
-                    <p><span>Link data: </span> <a href="<?php echo htmlspecialchars(!empty($row['URL']) ? $row['URL'] : 'belum ada data', ENT_QUOTES, 'UTF-8'); ?>" target="new_blank">klik disini</a></p>
+                    <p><span>Link data: </span> <a href="<?php echo htmlspecialchars(!empty($row['URLDATA']) ? $row['URLDATA'] : 'belum ada data', ENT_QUOTES, 'UTF-8'); ?>" target="new_blank">klik disini</a></p>
                 </div>
                 </div>
                 <div class="row block-9">
                     <div class="col-md-12 order-md-last d-flex">
-                        <form action="update.php" class="bg-white p-5 contact-form">
+                        <form action="update.php" method="POST" class="bg-white p-5 contact-form">
                         <div class="form-group">
-                            <input type="hidden" name="ID" class="form-control" value="<?php echo $data['ID'] ?>">
-                            <input type="hidden" name="TITLE" class="form-control" value="<?php echo $data['TITLE'] ?>">
-                            <input type="text" name="ALIAS_TITLE" class="form-control" value="<?php echo $row['ALIAS_TITLE'] ?>">
-                            <input type="hidden" name="OWNER" class="form-control" value="<?php echo $data['OWNER'] ?>">
-                            <input type="hidden" name="CREATED" class="form-control" value="<?php echo $data['CREATED'] ?>">
-                            <input type="hidden" name="MODIFIED" class="form-control" value="<?php echo $data['MODIFIED'] ?>">
-                            <input type="hidden" name="PORTAL" class="form-control" value="<?php echo $data['PORTAL'] ?>">
-                            <input type="hidden" name="type" class="form-control" value="<?php echo $data['type'] ?>">
-                            <input type="hidden" name="URL" class="form-control" value="<?php echo $data['URL'] ?>">
+                            <input type="hidden" name="ID" class="form-control" value="<?php echo htmlspecialchars($row['ID'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                            <input type="hidden" name="TITLE" class="form-control" value="<?php echo htmlspecialchars($row['TITLE'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                            <input type="text" name="ALIAS_TITLE" class="form-control" value="<?php echo htmlspecialchars($row['ALIAS_TITLE'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                            <input type="hidden" name="OWNERDATA" class="form-control" value="<?php echo htmlspecialchars($row['OWNERDATA'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                            <input type="hidden" name="CREATED" class="form-control" value="<?php echo htmlspecialchars($row['CREATED'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                            <input type="hidden" name="MODIFIED" class="form-control" value="<?php echo htmlspecialchars($row['MODIFIED'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                            <input type="hidden" name="PORTAL" class="form-control" value="<?php echo htmlspecialchars($row['PORTAL'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                            <input type="hidden" name="TIPEDATA" class="form-control" value="<?php echo htmlspecialchars($row['TIPEDATA'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                            <input type="hidden" name="URLDATA" class="form-control" value="<?php echo htmlspecialchars($row['URLDATA'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="AKSES" class="form-control" value="<?php echo $row['AKSES'] ?>">
-                            <input type="hidden" name="OWNERFOLDER" class="form-control" value="<?php echo $data['OWNERFOLDER'] ?>">
-                            <input type="hidden" name="FOLDER" class="form-control" value="<?php echo $data['FOLDER'] ?>">
-                            <input type="hidden" name="NUMVIEWS" class="form-control" value="<?php echo $data['NUMVIEWS'] ?>">
-                            <input type="hidden" name="SKPD" class="form-control" value="<?php echo $data['SKPD'] ?>">
+                            <input type="text" name="AKSES" class="form-control" value="<?php echo htmlspecialchars($row['AKSES'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                            <input type="hidden" name="OWNERFOLDER" class="form-control" value="<?php echo htmlspecialchars($row['OWNERFOLDER'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                            <input type="hidden" name="FOLDER" class="form-control" value="<?php echo htmlspecialchars($row['FOLDER'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                            <input type="hidden" name="NUMVIEWS" class="form-control" value="<?php echo htmlspecialchars($row['NUMVIEWS'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                            <input type="hidden" name="SKPD" class="form-control" value="<?php echo htmlspecialchars($row['SKPD'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="KATEGORI" class="form-control" value="<?php echo $row['KATEGORI'] ?>">
+                            <input type="text" name="KATEGORI" class="form-control" value="<?php echo htmlspecialchars($row['KATEGORI'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                         </div>
                         <div class="form-group">
-                            <textarea name="DESKRIPSI_SERVICE" cols="30" rows="7" class="form-control" value="<?php echo $row['DESKRIPSI_SERVICE'] ?>"></textarea>
+                            <textarea type="text" name="DESKRIPSI_SERVICE" cols="30" rows="7" class="form-control"><?php echo htmlspecialchars($row['DESKRIPSI_SERVICE'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
                         </div>
                         <div class="form-group">
                             <input type="submit" value="Simpan Data" class="btn btn-primary py-3 px-5">
