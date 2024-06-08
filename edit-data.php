@@ -98,6 +98,7 @@
                         <div class="form-group">
                             <input type="hidden" name="ID" class="form-control" value="<?php echo htmlspecialchars($row['ID'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                             <input type="hidden" name="TITLE" class="form-control" value="<?php echo htmlspecialchars($row['TITLE'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                            <label for="alias_title">Alias Title:</label>
                             <input type="text" name="ALIAS_TITLE" class="form-control" value="<?php echo htmlspecialchars($row['ALIAS_TITLE'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                             <input type="hidden" name="OWNERDATA" class="form-control" value="<?php echo htmlspecialchars($row['OWNERDATA'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                             <input type="hidden" name="CREATED" class="form-control" value="<?php echo htmlspecialchars($row['CREATED'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
@@ -107,16 +108,22 @@
                             <input type="hidden" name="URLDATA" class="form-control" value="<?php echo htmlspecialchars($row['URLDATA'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                         </div>
                         <div class="form-group">
+                            <label for="akses">Akses:</label>
                             <input type="text" name="AKSES" class="form-control" value="<?php echo htmlspecialchars($row['AKSES'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                             <input type="hidden" name="OWNERFOLDER" class="form-control" value="<?php echo htmlspecialchars($row['OWNERFOLDER'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                             <input type="hidden" name="FOLDER" class="form-control" value="<?php echo htmlspecialchars($row['FOLDER'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                             <input type="hidden" name="NUMVIEWS" class="form-control" value="<?php echo htmlspecialchars($row['NUMVIEWS'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
-                            <input type="hidden" name="SKPD" class="form-control" value="<?php echo htmlspecialchars($row['SKPD'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                         </div>
                         <div class="form-group">
+                            <label for="skpde">SKPD Pemilik data:</label>
+                            <input type="text" name="SKPD" class="form-control" value="<?php echo htmlspecialchars($row['SKPD'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="kategori">Kategori:</label>
                             <input type="text" name="KATEGORI" class="form-control" value="<?php echo htmlspecialchars($row['KATEGORI'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                         </div>
                         <div class="form-group">
+                            <label for="deskripsi">Deskripsi:</label>
                             <textarea type="text" name="DESKRIPSI_SERVICE" cols="30" rows="7" class="form-control"><?php echo htmlspecialchars($row['DESKRIPSI_SERVICE'] ?? '', ENT_QUOTES, 'UTF-8'); ?></textarea>
                         </div>
                         <div class="form-group">
